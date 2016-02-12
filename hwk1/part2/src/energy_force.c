@@ -71,6 +71,7 @@ void compute_energy_and_force( Atoms * myatoms, const lj_params * len_jo,
 	 ++m_pars->flop; 
 	 ++m_pars->flop; 
 	 ++m_pars->flop; 
+	 ++m_pars->flop; 
          if ( dis2 <= len_jo->rcut2 )
          {
             float dis2i = 1.0 / dis2;
@@ -99,15 +100,21 @@ void compute_energy_and_force( Atoms * myatoms, const lj_params * len_jo,
             
             myatoms->fx[atomi] += fterm * xxi;
 	    ++m_pars->flop; 
+	    ++m_pars->flop; 
             myatoms->fy[atomi] += fterm * yyi;
+	    ++m_pars->flop; 
 	    ++m_pars->flop; 
             myatoms->fz[atomi] += fterm * zzi;
 	    ++m_pars->flop; 
+	    ++m_pars->flop; 
             myatoms->fx[atomj] -= fterm * xxi;
+	    ++m_pars->flop; 
 	    ++m_pars->flop; 
             myatoms->fy[atomj] -= fterm * yyi;
 	    ++m_pars->flop; 
+	    ++m_pars->flop; 
             myatoms->fz[atomj] -= fterm * zzi;
+	    ++m_pars->flop; 
 	    ++m_pars->flop; 
          
          }
